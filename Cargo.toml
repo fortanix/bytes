@@ -1,6 +1,6 @@
 [package]
 name = "serde_bytes"
-version = "0.11.5" # remember to update html_root_url
+version = "0.11.6" # remember to update html_root_url
 authors = ["David Tolnay <dtolnay@gmail.com>"]
 license = "MIT OR Apache-2.0"
 description = "Optimized handling of `&[u8]` and `Vec<u8>` for Serde"
@@ -15,9 +15,13 @@ rust-version = "1.31"
 [features]
 default = ["std"]
 std = ["serde/std"]
-alloc = ["serde/alloc"]
+alloc = ["serde/alloc", "dep_alloc"]
+rustc-dep-of-std = ["core", "alloc", "compiler_builtins/rustc-dep-of-std", "serde/rustc-dep-of-std"]
 
 [dependencies]
+dep_alloc = { version = "1.0.0", optional = true, package = "rustc-std-workspace-alloc" }
+compiler_builtins = { version = "0.1.0", optional = true }
+core = { version = "1.0.0", optional = true, package = "rustc-std-workspace-core" }
 serde = { version = "1.0", default-features = false }
 
 [dev-dependencies]
@@ -27,3 +31,6 @@ serde_test = "1.0"
 
 [package.metadata.docs.rs]
 targets = ["x86_64-unknown-linux-gnu"]
+
+[patch.crates-io]
+serde = { git = "https://github.com/fortanix/serde.git", branch = "master" }

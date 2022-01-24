@@ -26,7 +26,6 @@
 //!     byte_buf: Vec<u8>,
 //! }
 //! ```
-
 #![doc(html_root_url = "https://docs.rs/serde_bytes/0.11.5")]
 #![cfg_attr(not(feature = "std"), no_std)]
 #![deny(missing_docs)]
