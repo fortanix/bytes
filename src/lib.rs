@@ -43,7 +43,7 @@ mod ser;
 mod bytebuf;
 
 #[cfg(feature = "alloc")]
-extern crate alloc;
+extern crate dep_alloc as alloc;
 
 #[cfg(any(feature = "std", feature = "alloc"))]
 use serde::Deserializer;
